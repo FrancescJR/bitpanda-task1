@@ -104,24 +104,19 @@ Here is some explanation and decisions about the development:
 ###  Directory Structure
 
 I understand this might come a little of a shock. I just know it's very important to develop as independent
-of the framework as possible. for that reason, All of my code can be foun in "src" and laravel, almost vanilla
+of the framework as possible. for that reason, All of my code can be found in "src" and laravel, almost vanilla
 with only the routes, some config, and some customizations to find the vendor in the parent directory
 is there.
 
 I have deleted several files that are not needed to complete this task. I am afrais I wasn't as throughtly as I would 
-have liked. Laravel gives you many funcionalities out of the box, for this very same reason, it's a very a poor choice
+have liked. Laravel gives you many functionalities out of the box, for this very same reason, it's a very a poor choice
 to use it as an API backend. Lumen might have been better. Symfony even better.
-
-Ironically, you are asking to install laravel via composer and this way it doesn't install the docker-compose file
-which could be needed.
 
 ### Docker
 
-The docker compose is basically the one you get from sail package, but I had to customize it a little bit
-because I am using a slightly different directory structure, plus, I had to add some several
-missing directives that I am sure can be found on sail scripts.
-
-It doesn't make sense to use a layer that encapsulates docker like sail, I wouldn't say Docker is that difficult.
+I might have overcomplicated the docker part since I didn't want to use Sail, but I have been using
+it's files anyway. Since I changed the directory structure, I had to customize that too, that's why I couldn't use it
+as is.
 
 
 ### Domain
