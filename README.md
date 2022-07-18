@@ -2,7 +2,7 @@
 
 This would be a quite good test if it weren't for restrictions for using Laravel.
 
-Example of Hexagonal Architecture, some DDD [sigh] with Laravel.
+Example of Hexagonal Architecture, some DDD with Laravel.
 
 ## Requirements
 
@@ -73,29 +73,22 @@ Since functional tests test the whole application and this one unfortunately is 
 the proper place to place this one is in the same Laravel Skeleton, you will find it where
 you would expect (for once!) on laravel-api/tests/Feature
 
-But WOW. Checking the vendor, it' nice you can make calls without thinking about the DB and so on, BUT you can't
-pass any content on the request body if you use laravel MakesHttpRequests ... like really?
+I have to admit it's cool to have this feature tests.
 
 ```
 public static function create(string $uri, string $method = 'GET', array $parameters = [], array $cookies = [], array $files = [], array $server = [], $content = null)
     
 ```
 What laravel passes are the "parameters", but what is actually needed is the $content, 
-please paste here :joy: emojis and :rofl: emojis. That's not serius. Again, a very BIG
-reason to not use Laravel for an API. Isn't this job about doing APIs?
+maybe a bug with this specific version? or bad usage from my part, please forgive me.
 
 Well you can execute it inside docker (it's a functional test that deals with DB)
 ```
 docker exec -ti bitpanda-task-1 vendor/phpunit/phpunit/phpunit
 ```
 
-Frankly, I just pass, I am not going to spend time trying to solve this (which can be solvable)
-maybe using Guzzle for example or spending some time with the vendor etc. But the whole
-task, with laravel as requirement is a non-sense. So I am just testing
-that it works when the data is NOT correct.
-
-3 endpoints were not long enough that also a test, but a Functional one!
-and this is just one task of 2, to be done in 1.5-2hours both of them xD
+Frankly, I just pass, I am testing only when Data is not OK. This is solvable, but 
+I have been already too many hours doing this task.
 
 ## Description
 
@@ -108,14 +101,14 @@ of the framework as possible. for that reason, All of my code can be found in "s
 with only the routes, some config, and some customizations to find the vendor in the parent directory
 is there.
 
-I have deleted several files that are not needed to complete this task. I am afrais I wasn't as throughtly as I would 
-have liked. Laravel gives you many functionalities out of the box, for this very same reason, it's a very a poor choice
+I have deleted several files that are not needed to complete this task. I am afraid I wasn't as throughtly as I would 
+have liked. Laravel gives you many functionalities out of the box -many frontend-, for this very same reason, it's a very a poor choice
 to use it as an API backend. Lumen might have been better. Symfony even better.
 
 ### Docker
 
 I might have overcomplicated the docker part since I didn't want to use Sail, but I have been using
-it's files anyway. Since I changed the directory structure, I had to customize that too, that's why I couldn't use it
+its files anyway. Since I changed the directory structure, I had to customize that too, that's why I couldn't use it
 as is.
 
 
@@ -145,7 +138,7 @@ an aggregate. Another hint is that this user details, without user, has no reaso
 
 I want to insist, that the reason of having it separately is very frail and it might be better
 for example to have it all as single entity in domain and maybe save it separately on the DB, but this also
-doesn't make any sense. This separation is just plainly a bad decision. Period.
+doesn't make any sense.
 
 For the first "call", which is a list of users with filters (if we want to apply some API restful concepts...)
 I am using a Criteria pattern. The implementation is rather "rude" (Criteria should have a list of filters
@@ -194,5 +187,7 @@ I wish I had time to add tests in the application and especially in the domain t
 the aggregate: you cannot edit directly user_Details, you have to use this entity through
 the user entity. That's a rule of teh aggregates.
 
-Unfortunately, time is pressing, and since I am quite sure we live in two complete different worlds, It's been
-years now that I am away of that world and I don't want to go back.
+I would indeed have spend some hours trying to fix those things, but since you said
+it should be a 1.5-2 hours job for both tasks I just cut the non relevant parts so we can
+have functioning application (I always present apps that should work when following the readme,
+but that is for sure more than 2 hours.)
